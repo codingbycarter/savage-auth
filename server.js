@@ -2,22 +2,26 @@
 
 // set up ======================================================================
 // get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 8080;
-const MongoClient = require('mongodb').MongoClient
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash    = require('connect-flash');
+let express  = require('express');
+let app      = express();
+let port     = process.env.PORT || 8080;
+// const MongoClient = require('mongodb').MongoClient
+let mongoose = require('mongoose');
 
-var morgan       = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true);
 
-var configDB = require('./config/database.js');
+let passport = require('passport');
+let flash    = require('connect-flash');
 
-var db
+let morgan       = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser   = require('body-parser');
+let session      = require('express-session');
+
+let configDB = require('./config/database.js');
+
+let db
 
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
